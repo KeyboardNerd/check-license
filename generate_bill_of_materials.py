@@ -48,7 +48,7 @@ template_never_map = "never map license '%s'"
 
 
 def add_bill_of_materials(project_name, project_license, project_format):
-  d = {"project": project_name, "license": project_license, "format": project_format}
+  d = {"project": project_name, "format": project_format, "license": project_license}
 
   for project in bill_of_materials:
     if project == d:
@@ -81,7 +81,7 @@ def save_config():
       "license_mapping": license_mapping,
       "known_project_licenses": known_project_licenses,
       "never_license_mapping": list(never_license_mapping),
-    }, f)
+    }, f, indent=4, sort_keys=True)
 
 
 def open_config():
@@ -98,6 +98,9 @@ def open_config():
 
 def map_license_to_specific_project(format_, name_):
   license_ = raw_input("%s has license >" % (name_,))
+  if license_ in license_mapping:
+    license_ = license_mapping[license_]
+
   add_known_project(format_, name_, license_)
   return license_
 
@@ -206,6 +209,6 @@ if __name__ == '__main__':
   _get_pip_package_licenses()
   with open(bill_of_materials_file_path, "w+") as bill_of_materials_file:
     bill_of_materials.sort(key=sort_key)
-    json.dump(bill_of_materials, bill_of_materials_file, indent=4)
+    json.dump(bill_of_materials, bill_of_materials_file, indent=4, sort_keys=True)
   print "saved total %d package licenses" % (len(bill_of_materials),)
 
