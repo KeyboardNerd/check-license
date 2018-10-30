@@ -1,8 +1,6 @@
 import json
 from collections import namedtuple
 
-bill_of_materials_file_path = "bill-of-materials.json"
-
 class Material(object):
     def __init__(self, name, licenses, format_, link):
         self.name = name
@@ -43,7 +41,7 @@ class BillOfMaterials(object):
         return prefix + e["project"].lower()
 
     def save(self):
-        with open(bill_of_materials_file_path, "w+") as bill_of_materials_file:
+        with open(self.file_path, "w+") as bill_of_materials_file:
             self.bill_of_materials.sort(key=BillOfMaterials.sort_key)
             json.dump(
                 self.bill_of_materials,
