@@ -1,0 +1,10 @@
+{
+    "npm": {
+        "package_json_including_folder": "/Users/sidchen/Dev/quay/",
+        "npm_licence_checker_binary": "/usr/local/bin/license-checker"
+    },
+    "pip": {
+        "pip_binary": "/Users/sidchen/.pyenv/versions/2.7.12/envs/quay/bin/pip",
+        "requirements_txt": "/Users/sidchen/Dev/quay/requirements.txt"
+    }
+}
