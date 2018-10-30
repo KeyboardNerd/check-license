@@ -1,13 +1,16 @@
-# check-license
-Extract licenses of dependent packages from a repo with NPM or PIP and generate a bill-of-material.json file semi-automatically.
+# Check License
 
-# Usage
+Extract licenses of dependent packages from a repo with NPM or PIP and generate a `bill-of-material.json` file semi-automatically.
 
-1. Run `Python generate_bill_of_materials.py` under a project with `requirements.txt` and `package.json`.
-2. Follow the instructions. If you messed it up, close the program, open `bill_of_materials.config.json` to edit the wrong configuration. 
-3. The result will be stored in the `bill_of_materials1.json` in case you don't want to really mess up the original `bill_of_materials.json`. It's your responsibility to check and rename.
+## Usage
 
-# Fields in Config
+1. Install npm `license-check`, and PIP, where the packages for a project is installed.
+2. Configure `parsers.config.json` with absolute path
+3. Run `python main.py`
+
+The manually found licenses and license mappings will be stored in `formatter.config.json`.
+
+## When running the app
 
 ### never_license_mapping
 
@@ -16,7 +19,7 @@ These licenses will never be automatically mapped to desired license. Whenever t
 ### license_mapping
 
 These licenses in key fields will be converted to the ones in value fields. This is handy because:
-e.g. 
+e.g.
 apache2 or apache license 2.0 or apache-2 or apache-2.0 should be mapped to Apache License, version 2.0
 
 ### known_project_licenses
